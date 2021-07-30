@@ -4,7 +4,7 @@
  * @format: first parameter
  * Return: an int, which is the number of charcters printed
  */
-int _printf(const char *format, ...)
+int _printf(char *format, ...)
 {
 	/*insert something here*/
 	char *traverse;
@@ -38,5 +38,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(arg);
-	return (0);
+	return (_strlen(format));
 }
