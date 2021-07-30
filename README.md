@@ -1,1 +1,1 @@
-# Custom made printf function
+Custom printf function

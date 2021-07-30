@@ -1,42 +1,37 @@
 #include "holberton.h"
+
 /**
- * _printf - a function that works same as printf of the standard library
- * @format: first parameter
- * Return: an int, which is the number of charcters printed
+ * _printf - Receives the main string and all the necessary parameters to
+ * print a formated string
+ * @format: A string containing all the desired characters
+ * Return: A total count of the characters printed
  */
-int _printf(char *format, ...)
+int _printf(const char *format, ...)
 {
-	/*insert something here*/
-	char *traverse;
-	unsigned int i;
-	char *s;
+	int printed_chars;
+	conver_t f_list[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{"d", print_integer},
+		{"i", print_integer},
+		{"b", print_binary},
+		{"r", print_reversed},
+		{"R", rot13},
+		{"u", unsigned_integer},
+		{"o", print_octal},
+		{"x", print_hex},
+		{"X", print_heX},
+		{NULL, NULL}
+	};
+	va_list arg_list;
 
-	/*we start here*/
-	va_list arg;
+	if (format == NULL)
+		return (-1);
 
-	va_start(arg, format);
-	for (traverse = format; *traverse != '\0'; traverse++)
-	{
-		while (*traverse != '%')
-		{
-			_putchar(*traverse);
-			traverse++;
-		}
-		traverse++;
-		/*this is step 2*/
-		if (*traverse == 'c')
-		{
-			i = va_arg(arg, int);
-			_putchar(i);
-			break;
-		}
-		else if (*traverse == 's')
-		{
-			s = va_arg(arg, char *);
-			_puts(s);
-			break;
-		}
-	}
-	va_end(arg);
-	return (_strlen(format));
+	va_start(arg_list, format);
+	/*Calling parser function*/
+	printed_chars = parser(format, f_list, arg_list);
+	va_end(arg_list);
+	return (printed_chars);
 }
