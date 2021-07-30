@@ -1,6 +1,7 @@
 #ifndef PRINT_F
 #define PRINT_F
 
+<<<<<<< HEAD
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -42,5 +43,14 @@ void write_base(char *str);
 char *_memcpy(char *dest, char *src, unsigned int n);
 int print_unsgined_number(unsigned int);
 
+=======
+#include <stdio.h>
+#include <stdarg.h>
+
+int _printf(char *format, ...);
+int _putchar(char c);
+int _strlen(const char *s);
+int _puts(char *t);
+>>>>>>> 6534dda68c7cb21e90ecae334ae1d163fcf04c21
 
 #endif
